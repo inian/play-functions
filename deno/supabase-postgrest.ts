@@ -1,20 +1,18 @@
 import { serve } from "https://deno.land/std@0.114.0/http/server.ts";
 import { PostgrestClient } from "https://cdn.skypack.dev/@supabase/postgrest-js";
 
+const SUPABASE_URL = Deno.env.get("SUPABASE_URL");
 const SERVICE_KEY = Deno.env.get("SERVICE_KEY");
 
 // todo: why is schema and fetch required
-const postgrest = new PostgrestClient(
-  "https://uhaiolqyxqbapxpxerzj.supabase.co/rest/v1/",
-  {
-    headers: {
-      apiKey: SERVICE_KEY,
-      Authorization: `Bearer ${SERVICE_KEY}`,
-    },
-    schema: "public",
-    fetch,
-  }
-);
+const postgrest = new PostgrestClient(SUPABASE_URL, {
+  headers: {
+    apiKey: SERVICE_KEY,
+    Authorization: `Bearer ${SERVICE_KEY}`,
+  },
+  schema: "public",
+  fetch,
+});
 
 serve(async (req) => {
   const url = new URL(req.url);
