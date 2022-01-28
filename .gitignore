@@ -1,0 +1,8 @@
+node_modules/
+.npm
+.config
+
+#suborbital
+suborbital/local/
+suborbital/.who
+suborbital/SCC.env
