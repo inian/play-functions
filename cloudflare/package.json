@@ -6,10 +6,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
   "author": "",
   "license": "ISC",
-  "devDependencies": {
-    "miniflare": "^2.2.0"
+  "dependencies": {
+    "hello-world-module": "^1.0.1",
+    "pg": "^8.7.1"
   }
 }
