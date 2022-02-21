@@ -1,3 +1,3 @@
 addEventListener("fetch", (event) => {
-  event.respondWith(new Response("Hello from subhosting 3"));
+  event.respondWith(new Response("Hello from subhosting 4"));
 });
