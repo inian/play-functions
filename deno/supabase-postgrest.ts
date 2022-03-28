@@ -1,8 +1,8 @@
 import { serve } from "https://deno.land/std@0.114.0/http/server.ts";
-import { PostgrestClient } from "https://cdn.skypack.dev/@supabase/postgrest-js";
+import { PostgrestClient } from "https://esm.sh/@supabase/postgrest-js@0.37.1";
 
-const SUPABASE_URL = Deno.env.get("SUPABASE_URL");
-const SERVICE_KEY = Deno.env.get("SERVICE_KEY");
+const SUPABASE_URL = Deno.env.get("SUPABASE_URL") || '';
+const SERVICE_KEY = Deno.env.get("SERVICE_KEY") || '';
 
 // todo: why is schema and fetch required
 const postgrest = new PostgrestClient(SUPABASE_URL, {
@@ -24,7 +24,6 @@ serve(async (req) => {
     switch (req.method) {
       case "GET": {
         // await Promise.resolve();
-        // @ts-expect-error: deno doenst like that Postgrestfilterbuilder doesn't return a promise
         const { error, data } = await postgrest.from("todos").select();
         if (error) {
           console.error(error);
